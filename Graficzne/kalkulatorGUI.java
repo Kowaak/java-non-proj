@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 class calculator extends JFrame implements ActionListener {
 	static JFrame f;
-	static JTextField l;
+	static JTextField poletxt;
 	String s0, s1, s2;
 	calculator()
 	{
@@ -23,15 +23,11 @@ class calculator extends JFrame implements ActionListener {
 		}
 		calculator c = new calculator();
 
-		l = new JTextField(16);
+		poletxt = new JTextField(16);
 
-		// set the textfield to non editable
-		l.setEditable(false);
+		poletxt.setEditable(false);
 
-		// create number buttons and some operators
 		JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, ba, bs, bd, bm, be, beq, beq1;
-
-		// create number buttons
 		b0 = new JButton("0");
 		b1 = new JButton("1");
 		b2 = new JButton("2");
@@ -42,25 +38,14 @@ class calculator extends JFrame implements ActionListener {
 		b7 = new JButton("7");
 		b8 = new JButton("8");
 		b9 = new JButton("9");
-
-		// equals button
 		beq1 = new JButton("=");
-
-		// create operator buttons
 		ba = new JButton("+");
 		bs = new JButton("-");
 		bd = new JButton("/");
 		bm = new JButton("*");
 		beq = new JButton("C");
-
-		// create . button
 		be = new JButton(".");
-
-		// create a panel
-		JPanel p = new JPanel();
-
-		// add action listeners
-		bm.addActionListener(c);
+        bm.addActionListener(c);
 		bd.addActionListener(c);
 		bs.addActionListener(c);
 		ba.addActionListener(c);
@@ -77,9 +62,9 @@ class calculator extends JFrame implements ActionListener {
 		be.addActionListener(c);
 		beq.addActionListener(c);
 		beq1.addActionListener(c);
-
-		// add elements to panel
-		p.add(l);
+		JPanel p = new JPanel(new GridLayout(5, 3, 5, 5));
+        p.setBackground(Color.darkGray);
+		p.add(poletxt);
 		p.add(ba);
 		p.add(b1);
 		p.add(b2);
@@ -98,20 +83,16 @@ class calculator extends JFrame implements ActionListener {
 		p.add(beq);
 		p.add(beq1);
 
-		// set Background of panel
-		p.setBackground(Color.blue);
-
-		// add panel to frame
+		p.setBackground(Color.darkGray);
 		f.add(p);
 
-		f.setSize(200, 220);
+		f.setSize(400, 440);
 		f.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e)
 	{
 		String s = e.getActionCommand();
 
-		// if the value is a number
 		if ((s.charAt(0) >= '0' && s.charAt(0) <= '9') || s.charAt(0) == '.') {
 			// if operand is present then add to second no
 			if (!s1.equals(""))
@@ -120,14 +101,14 @@ class calculator extends JFrame implements ActionListener {
 				s0 = s0 + s;
 
 			// set the value of text
-			l.setText(s0 + s1 + s2);
+			poletxt.setText(s0 + s1 + s2);
 		}
 		else if (s.charAt(0) == 'C') {
 			// clear the one letter
 			s0 = s1 = s2 = "";
 
 			// set the value of text
-			l.setText(s0 + s1 + s2);
+			poletxt.setText(s0 + s1 + s2);
 		}
 		else if (s.charAt(0) == '=') {
 
@@ -144,7 +125,7 @@ class calculator extends JFrame implements ActionListener {
 				te = (Double.parseDouble(s0) * Double.parseDouble(s2));
 
 			// set the value of text
-			l.setText(s0 + s1 + s2 + "=" + te);
+			poletxt.setText(s0 + s1 + s2 + "=" + te);
 
 			// convert it to string
 			s0 = Double.toString(te);
@@ -165,7 +146,13 @@ class calculator extends JFrame implements ActionListener {
 				else if (s1.equals("-"))
 					te = (Double.parseDouble(s0) - Double.parseDouble(s2));
 				else if (s1.equals("/"))
+                    te = (Double.parseDouble(s0) / Double.parseDouble(s2));
+                    /*if(Double.parseDouble(s1) == 0 || Double.parseDouble(s2) == 0){
+                        te = Double.parseDouble("Błąd: Dzielenie przez 0");
+                    }
+                    else{
 					te = (Double.parseDouble(s0) / Double.parseDouble(s2));
+                    }*/
 				else
 					te = (Double.parseDouble(s0) * Double.parseDouble(s2));
 
@@ -180,7 +167,7 @@ class calculator extends JFrame implements ActionListener {
 			}
 
 			// set the value of text
-			l.setText(s0 + s1 + s2);
+			poletxt.setText(s0 + s1 + s2);
 		}
 	}
 }
