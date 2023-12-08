@@ -1,3 +1,5 @@
+package Graficzne;
+
 
 
 import javax.swing.*;

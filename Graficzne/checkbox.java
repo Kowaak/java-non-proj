@@ -1,7 +1,7 @@
 package Graficzne;
 import javax.swing.*;
 import java.awt.*;
-public class form {
+public class checkbox {
     public static void main(String[] args) {
         JFrame ramka = new JFrame();
         ramka.setSize(500, 450); // rozmiar okna
