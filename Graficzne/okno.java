@@ -1,3 +1,5 @@
+/*package Graficzne;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -26,4 +28,4 @@ public class okno {
         ramka.add(panel); // jest na nim panel
         panel.add(moje_pole); // a na panelu pole tekstowe 
     }
-}
+}*/

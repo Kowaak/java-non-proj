@@ -7,8 +7,7 @@ class calculator extends JFrame implements ActionListener {
 	static JFrame f;
 	static JTextField poletxt;
 	String s0, s1, s2;
-	calculator()
-	{
+	calculator(){
 		s0 = s1 = s2 = "";
 	}
 	public static void main(String args[])
@@ -23,8 +22,7 @@ class calculator extends JFrame implements ActionListener {
 		calculator c = new calculator();
 		poletxt = new JTextField(16);
 		poletxt.setEditable(false);
-		//Image icon = Toolkit.getDefaultToolkit().getImage("logo.png");    
-		//f.setIconImage(icon);    
+		f.setIconImage(Toolkit.getDefaultToolkit().getImage("Graficzne\\logo.png"));
 		JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, ba, bs, bd, bm, be, beq, beq1;
 		b0 = new JButton("0");
 		b1 = new JButton("1");
@@ -43,7 +41,7 @@ class calculator extends JFrame implements ActionListener {
 		bm = new JButton("*");
 		beq = new JButton("C");
 		be = new JButton(".");
-        	bm.addActionListener(c);
+		bm.addActionListener(c);
 		bd.addActionListener(c);
 		bs.addActionListener(c);
 		ba.addActionListener(c);
@@ -61,50 +59,51 @@ class calculator extends JFrame implements ActionListener {
 		beq.addActionListener(c);
 		beq1.addActionListener(c);
 		JPanel p = new JPanel();
-       		p.setBackground(Color.darkGray);
-		p.add(poletxt);
-		p.add(beq);
-		panel.add(Box.createRigidArea(new Dimension(820,3)));
-		p.add(ba);
-		p.add(b1);
-		p.add(b2);
-		p.add(b3);
-		panel.add(Box.createRigidArea(new Dimension(820,3)));
-		p.add(bs);
-		p.add(b4);
-		p.add(b5);
-		p.add(b6);
-		panel.add(Box.createRigidArea(new Dimension(820,3)));
-		p.add(bm);
-		p.add(b7);
-		p.add(b8);
-		p.add(b9);
-		p.add(bd);
-		panel.add(Box.createRigidArea(new Dimension(820,3)));
-		p.add(be);
-		p.add(b0);
-		p.add(beq1);
+		p.setBackground(Color.darkGray);
+		Dimension buttonSize = new Dimension(65, 65);
+		p.add(poletxt).setPreferredSize(new Dimension(350, 65));
+		p.add(beq).setPreferredSize(buttonSize);
+		p.add(Box.createRigidArea(new Dimension(820,5)));
+		p.add(b1).setPreferredSize(buttonSize);
+		p.add(b2).setPreferredSize(buttonSize);
+		p.add(b3).setPreferredSize(buttonSize);
+		p.add(ba).setPreferredSize(buttonSize);
+		p.add(Box.createRigidArea(new Dimension(820,5)));
+		p.add(b4).setPreferredSize(buttonSize);
+		p.add(b5).setPreferredSize(buttonSize);
+		p.add(b6).setPreferredSize(buttonSize);
+		p.add(bs).setPreferredSize(buttonSize);
+		p.add(Box.createRigidArea(new Dimension(820,5)));
+		p.add(b7).setPreferredSize(buttonSize);
+		p.add(b8).setPreferredSize(buttonSize);
+		p.add(b9).setPreferredSize(buttonSize);
+		p.add(bm).setPreferredSize(buttonSize);
+		p.add(Box.createRigidArea(new Dimension(820,5)));
+		p.add(bd).setPreferredSize(buttonSize);
+		p.add(be).setPreferredSize(buttonSize);
+		p.add(b0).setPreferredSize(buttonSize);
+		p.add(beq1).setPreferredSize(buttonSize);
 
 		p.setBackground(Color.darkGray);
 		f.add(p);
-
+		f.setResizable(false);
 		f.setSize(400, 440);
 		f.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e)
 	{
 		String s = e.getActionCommand();
-
+		ImageIcon blad = new ImageIcon("Graficzne\\nerd.png");
 		if ((s.charAt(0) >= '0' && s.charAt(0) <= '9') || s.charAt(0) == '.') {
 			if (!s1.equals(""))
 				s2 = s2 + s;
 			else
 				s0 = s0 + s;
-        if(s0.contains(".") && s.contains("."))
-        {
-            JOptionPane.showMessageDialog(f, "Błąd: Liczba może zawierać tylko jedną kropkę", "Błąd", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+		if(s0.contains(".") && s.contains("."))
+		{
+			JOptionPane.showMessageDialog(f, "Błąd: Liczba może zawierać tylko jedną kropkę", "Błąd", JOptionPane.ERROR_MESSAGE,blad);
+			return;
+		}
 		poletxt.setText(s0 + s1 + s2);
 		}
 		else if (s.charAt(0) == 'C') {
@@ -118,13 +117,13 @@ class calculator extends JFrame implements ActionListener {
 			else if (s1.equals("-"))
 				te = (Double.parseDouble(s0) - Double.parseDouble(s2));
 				else if (s1.equals("/"))
-	    	        if(Double.parseDouble(s2) == 0){
-	    	            JOptionPane.showMessageDialog(f, "Błąd: Dzielenie przez 0", "Błąd", JOptionPane.ERROR_MESSAGE);
-	    	            return;
-	    	        }
-	    	        else{
+					if(Double.parseDouble(s2) == 0){
+						JOptionPane.showMessageDialog(f, "Błąd: Dzielenie przez 0", "Błąd", JOptionPane.ERROR_MESSAGE,blad);
+						return;
+					}
+					else{
 					te = (Double.parseDouble(s0) / Double.parseDouble(s2));
-	    	        }
+					}
 				else
 					te = (Double.parseDouble(s0) * Double.parseDouble(s2));
 				poletxt.setText(s0 + s1 + s2 + "=" + te);
@@ -142,13 +141,13 @@ class calculator extends JFrame implements ActionListener {
 				else if (s1.equals("-"))
 					te = (Double.parseDouble(s0) - Double.parseDouble(s2));
 				else if (s1.equals("/"))
-	                if(Double.parseDouble(s2) == 0){
-	                    JOptionPane.showMessageDialog(f, "Błąd: Dzielenie przez 0", "Error", JOptionPane.ERROR_MESSAGE);
-	                    return;
-	                }
-	                else{
+					if(Double.parseDouble(s2) == 0){
+						JOptionPane.showMessageDialog(f, "Błąd: Dzielenie przez 0", "Error", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					else{
 						te = (Double.parseDouble(s0) / Double.parseDouble(s2));
-	                }
+					}
 				else
 					te = (Double.parseDouble(s0) * Double.parseDouble(s2));
 				s0 = Double.toString(te);
