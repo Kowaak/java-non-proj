@@ -1,7 +1,3 @@
-package Graficzne;
-
-
-
 import javax.swing.*;
 import java.awt.*;
 

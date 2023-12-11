@@ -12,7 +12,7 @@ public class checkbox {
         panel.setBackground(Color.lightGray);
         panel.setPreferredSize(new Dimension(820,500));
 
-        ButtonGroup radia = new ButtonGroup();
+        ButtonGroup radia = new ButtonGroup(); //Utworzenie grupy radia
         JLabel odp1 = new JLabel();
         JRadioButton radio1 = new JRadioButton("A");
         JRadioButton radio2 = new JRadioButton("B");
@@ -22,17 +22,17 @@ public class checkbox {
         radio2.addActionListener(e -> odp1.setText("Odp. B"));
         radio3.addActionListener(e -> odp1.setText("Odp. C"));
 
-        radia.add(radio1);
+        radia.add(radio1); //dodanie radii do grupy
         radia.add(radio2);
         radia.add(radio3);
 
-        panel.add(radio1);
+        panel.add(radio1); //dodanie radii do panelu
         panel.add(radio2);
         panel.add(radio3);
-        panel.add(Box.createRigidArea(new Dimension(820,3 )));
+        panel.add(Box.createRigidArea(new Dimension(820,3)));
         panel.add(odp1);
 
-        panel.add(Box.createRigidArea(new Dimension(820,3 )));
+        panel.add(Box.createRigidArea(new Dimension(820,3)));
 
         JLabel odp2 = new JLabel();
         JCheckBox check1 = new JCheckBox("A");
@@ -46,10 +46,14 @@ public class checkbox {
         panel.add(check1);
         panel.add(check2);
         panel.add(check3);
-        panel.add(Box.createRigidArea(new Dimension(820,3 )));
+        panel.add(Box.createRigidArea(new Dimension(820,3)));
         panel.add(odp2);
 
         ramka.setVisible(true);
         ramka.add(panel);
     }
 }
+/*
+Zamapować swój dysk na one drive na swoim komputerze za pomoca oprogramowania rclone
+Zwięzła dokumentacja i screeny że działa
+ */
