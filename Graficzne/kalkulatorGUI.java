@@ -1,4 +1,4 @@
-package Graficzne;
+
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -142,7 +142,7 @@ class calculator extends JFrame implements ActionListener {
 					te = (Double.parseDouble(s0) - Double.parseDouble(s2));
 				else if (s1.equals("/"))
 					if(Double.parseDouble(s2) == 0){
-						JOptionPane.showMessageDialog(f, "Błąd: Dzielenie przez 0", "Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(f, "Błąd: Dzielenie przez 0", "Błąd", JOptionPane.ERROR_MESSAGE,blad);
 						return;
 					}
 					else{

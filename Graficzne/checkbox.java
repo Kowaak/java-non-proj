@@ -1,4 +1,3 @@
-package Graficzne;
 import javax.swing.*;
 import java.awt.*;
 public class checkbox {
